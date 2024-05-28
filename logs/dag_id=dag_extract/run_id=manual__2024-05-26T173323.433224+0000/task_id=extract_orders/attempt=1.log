@@ -1,0 +1,38 @@
+[2024-05-26T17:33:24.367+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: dag_extract.extract_orders manual__2024-05-26T17:33:23.433224+00:00 [queued]>
+[2024-05-26T17:33:24.378+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: dag_extract.extract_orders manual__2024-05-26T17:33:23.433224+00:00 [queued]>
+[2024-05-26T17:33:24.379+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2024-05-26T17:33:24.380+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2024-05-26T17:33:24.381+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2024-05-26T17:33:24.397+0000] {taskinstance.py:1383} INFO - Executing <Task(PythonOperator): extract_orders> on 2024-05-26 17:33:23.433224+00:00
+[2024-05-26T17:33:24.401+0000] {standard_task_runner.py:55} INFO - Started process 12632 to run task
+[2024-05-26T17:33:24.404+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'dag_extract', 'extract_orders', 'manual__2024-05-26T17:33:23.433224+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/dag_extract.py', '--cfg-path', '/tmp/tmpo7fzmk5o']
+[2024-05-26T17:33:24.405+0000] {standard_task_runner.py:83} INFO - Job 4: Subtask extract_orders
+[2024-05-26T17:33:24.463+0000] {task_command.py:376} INFO - Running <TaskInstance: dag_extract.extract_orders manual__2024-05-26T17:33:23.433224+00:00 [running]> on host 9a04f700e4be
+[2024-05-26T17:33:24.534+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=dag_extract
+AIRFLOW_CTX_TASK_ID=extract_orders
+AIRFLOW_CTX_EXECUTION_DATE=2024-05-26T17:33:23.433224+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-05-26T17:33:23.433224+00:00
+[2024-05-26T17:33:24.644+0000] {taskinstance.py:1851} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 193, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/extract_orders.py", line 19, in main
+    host=host, user=user, password=password, port=port, database=db_name
+  File "/home/airflow/.local/lib/python3.7/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "127.0.0.1", port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2024-05-26T17:33:24.660+0000] {taskinstance.py:1406} INFO - Marking task as FAILED. dag_id=dag_extract, task_id=extract_orders, execution_date=20240526T173323, start_date=20240526T173324, end_date=20240526T173324
+[2024-05-26T17:33:24.674+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 4 for task extract_orders (connection to server at "127.0.0.1", port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+; 12632)
+[2024-05-26T17:33:24.696+0000] {local_task_job.py:164} INFO - Task exited with return code 1
+[2024-05-26T17:33:24.720+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
