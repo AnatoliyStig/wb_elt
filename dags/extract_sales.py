@@ -1,6 +1,7 @@
 import psycopg2
 from connect_pg import host, user, db_name, password, port
 import requests
+from datetime import datetime
 
 date_from = "2023-01-01"
 token = "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjMxMDI1djEiLCJ0eXAiOiJKV1QifQ.eyJlbnQiOjEsImV4cCI6MTcxNzY5Mzc2OCwiaWQiOiI3MDdhNjFkZC01MWUwLTRjNDktYjNhZC02N2Y0Y2VlYmQyOGQiLCJpaWQiOjUzNzQ1NTQ1LCJvaWQiOjQ0MTgyMCwicyI6MTA3Mzc0MTg1Niwic2lkIjoiMDliZTA5NTUtM2ViZC00MDNkLWJkNzctNGQwYjhmNzBkZjRiIiwidWlkIjo1Mzc0NTU0NX0.niVswDAdI503OlyTG0d6eCYZZP1f0wmGURj_y-PsWP0PdNzvZAqKw_4DpSuvfRqkn0_2EJcMJ2X48yd-0yow3Q"
@@ -35,7 +36,8 @@ def main():
                     cancelDate TIMESTAMP WITHOUT TIME ZONE,
                     subject VARCHAR(50),
                     category VARCHAR(50),
-                    brand VARCHAR(50)
+                    brand VARCHAR(50),
+					ctl_datetime TIMESTAMP WITHOUT TIME ZONE
                 )"""
     )
 
@@ -55,11 +57,12 @@ def main():
             subject = item.get("subject")
             category = item.get("category")
             brand = item.get("brand")
+            ctl_datetime = datetime.now()
 
             cursor.execute(
                 "INSERT INTO sales (srid, gNumber, date_order, lastchangedate, \
                                     priceWithDisc,discountPercent, supplierArticle, isCancel, \
-                                    cancelDate, subject, category, brand) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                                    cancelDate, subject, category, brand, ctl_datetime) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                 (
                     srid,
                     gNumber,
@@ -73,6 +76,7 @@ def main():
                     subject,
                     category,
                     brand,
+                    ctl_datetime,
                 ),
             )
 

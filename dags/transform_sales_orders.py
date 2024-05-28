@@ -11,6 +11,17 @@ def main():
     # cursor
     cursor = connection.cursor()
 
+    cursor.execute(
+        """create table if not exists aggr_ord_sale (
+                    date_order TIMESTAMP WITHOUT TIME ZONE,
+                    ord_sum INT,
+                    sale_sum INT,
+                    ord_cnt INT,
+                    sale_cnt INT,
+					ctl_datetime TIMESTAMP WITHOUT TIME ZONE
+                )"""
+    )
+
     cursor.execute("""truncate table aggr_ord_sale""")
 
     cursor.execute(
@@ -20,18 +31,20 @@ def main():
                 sum(case when type='orders' then pricewithdisc else 0 end) as ord_sum,
                 sum(case when type='sales' then pricewithdisc else 0 end) as sale_sum,
                 sum(case when type='orders' then 1 else 0 end) as ord_cnt,
-                sum(case when type='orders' then 1 else 0 end) as ord_cnt
+                sum(case when type='sales' then 1 else 0 end) as sale_cnt,
+                now() as ctl_datetime
             from
                 (select
-                    *,
+                    date_order,
+                    pricewithdisc,
                     'sales' as type
                 from sales
                 union
                 select
-                    *,
+                    date_order,
+                    pricewithdisc,
                     'orders' as type
                 from orders) t
-            where date(date_order) >= '2024-05-01'
             group by date(date_order)
             order by date(date_order)"""
     )
