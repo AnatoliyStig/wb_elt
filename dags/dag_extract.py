@@ -6,8 +6,6 @@ from extract_orders import main as extract_orders
 from extract_sales import main as extract_sales
 from transform_sales_orders import main as transform_sales_orders
 
-# test
-
 
 def get_name():
     return os.path.splitext(os.path.basename(__file__))[0]

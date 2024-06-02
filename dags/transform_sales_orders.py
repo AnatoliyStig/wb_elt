@@ -2,14 +2,13 @@ import psycopg2
 from connect_pg import host, user, db_name, password, port
 
 
-# test
 def main():
-    # connect
+    # connect to DB
     connection = psycopg2.connect(
         host=host, user=user, password=password, port=port, database=db_name
     )
 
-    # cursor
+    # create Cursor
     cursor = connection.cursor()
 
     cursor.execute(
