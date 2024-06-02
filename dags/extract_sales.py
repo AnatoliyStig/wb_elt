@@ -12,7 +12,6 @@ import requests
 from datetime import datetime
 
 date_from = "2023-01-01"
-# test
 
 
 def main():
