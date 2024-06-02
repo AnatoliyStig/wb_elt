@@ -1,7 +1,2 @@
-dags/__pycache__/transform_sales_orders.cpython-37.pyc
-dags/__pycache__/connect_pg.cpython-37.pyc
-dags/__pycache__/dag_extract.cpython-37.pyc
-dags/__pycache__/dag_extract_new.cpython-37.pyc
-dags/__pycache__/extract_orders.cpython-37.pyc
-dags/__pycache__/extract_sales.cpython-37.pyc
+dags/__pycache__/
 logs/
