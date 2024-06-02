@@ -6,6 +6,7 @@ db_name = "postgres"
 port = "5432"
 """
 
+# BD Airflow
 host = "postgres"
 user = "airflow"
 password = "airflow"
