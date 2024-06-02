@@ -2,6 +2,7 @@ import psycopg2
 from connect_pg import host, user, db_name, password, port
 
 
+# test
 def main():
     # connect
     connection = psycopg2.connect(

@@ -11,3 +11,6 @@ user = "airflow"
 password = "airflow"
 db_name = "airflow"
 port = "5432"
+
+token_seller_1 = "you need write your Token"
+token_seller_2 = "you need write your Token"

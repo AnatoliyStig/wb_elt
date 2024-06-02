@@ -1,11 +1,17 @@
 import psycopg2
-from connect_pg import host, user, db_name, password, port
+from connect_pg import (
+    host,
+    user,
+    db_name,
+    password,
+    port,
+    token_seller_1,
+    token_seller_2,
+)
 import requests
 from datetime import datetime
 
 date_from = "2023-01-01"
-token_seller_1 = "you need write your Token"
-token_seller_2 = "you need write your Token"
 
 
 def main():
