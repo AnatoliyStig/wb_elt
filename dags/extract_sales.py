@@ -8,6 +8,7 @@ token_seller_1 = "you need write your Token"
 token_seller_2 = "you need write your Token"
 
 
+# test
 def main():
     # connect to DB
     connection = psycopg2.connect(
