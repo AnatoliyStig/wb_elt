@@ -1,2 +1,0 @@
-[2024-05-28T17:50:09.325+0000] {taskinstance.py:1159} INFO - Dependencies not met for <TaskInstance: dag_extract.extract_sales_task manual__2024-05-27T18:29:47.572721+00:00 [success]>, dependency 'Task Instance State' FAILED: Task is in the 'success' state.
-[2024-05-28T17:50:09.329+0000] {local_task_job.py:103} INFO - Task is not able to be run
